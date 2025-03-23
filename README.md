@@ -1,4 +1,4 @@
-Simple React + Vite app.
+Simple React + Vite app
 
 - TanStack query for getting and caching data
 - WebSockets for quick responsive messaging
