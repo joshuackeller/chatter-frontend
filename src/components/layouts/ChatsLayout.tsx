@@ -5,7 +5,7 @@ import { Outlet, useNavigate, useParams } from "react-router";
 import { LogOutIcon, PlusIcon } from "lucide-react";
 import CreateChatModal from "../modals/CreateChatModal";
 import { useState } from "react";
-import { isBefore } from "date-fns";
+import { isAfter, isBefore } from "date-fns";
 import { Button } from "../ui/button";
 import useUpdateLocalData from "@/lib/data/useUpdateLocalData";
 
@@ -48,12 +48,13 @@ const ChatsLayout = () => {
               }}
             >
               <div className="flex gap-x-2 items-center">
-                {!!chat.lastReadAt &&
-                !!chat.lastMessageAt &&
-                isBefore(
-                  new Date(chat.lastReadAt),
-                  new Date(chat.lastMessageAt)
-                ) ? (
+                {(!!chat.lastReadAt &&
+                  !!chat.lastMessageAt &&
+                  isAfter(
+                    new Date(chat.lastMessageAt),
+                    new Date(chat.lastReadAt)
+                  )) ||
+                !chat.lastReadAt ? (
                   <div className="h-2 w-2 bg-indigo-500 rounded-full" />
                 ) : (
                   <div className="h-2 w-2" />

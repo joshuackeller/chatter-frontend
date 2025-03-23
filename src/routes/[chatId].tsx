@@ -133,7 +133,7 @@ const ChatScreen = () => {
           setOpen={setAddAccountOpen}
         />
       </div>
-      <div className="flex-grow overflow-y-auto h-[calc(100vh-120px)] px-3">
+      <div className="flex-grow overflow-y-auto h-[calc(100vh-120px)] px-3 pb-1">
         <div className="flex flex-col min-h-full justify-end">
           {sortedMessages?.length === 0 ? (
             <div className="text-sm text-zinc-400 ml-1">No messages yet</div>
